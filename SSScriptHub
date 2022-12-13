@@ -63,7 +63,7 @@ ScriptScroll.ScrollBarThickness = 8
 ScriptScroll.Position = UDim2.new(0,0,0,0)
 ScriptScroll.ScrollBarImageColor3 = Color3.fromRGB(20, 134, 255)
 ScriptScroll.BorderSizePixel = 0
-ScriptScroll.CanvasSize = UDim2.new(0,0,2,0)
+ScriptScroll.CanvasSize = UDim2.new(0,0,1,0)
 ScriptScroll.ClipsDescendants = true
 ScriptScroll.CanvasPosition = Vector2.new(0,0)
 
@@ -151,13 +151,36 @@ end
 
 
 AddSSScript("Lightning Cannon",'require(6411905832).Lightning(string.reverse("BillyRiceFarmer"))')
+AddSSScript("Immortality Lord",'require(6534274227)("BillyRiceFarmer")')
 AddSSScript("R6",'require(6861971724).convert("BillyRiceFarmer")')
 AddSSScript("Vereus",'require(4875169740).load("BillyRiceFarmer")')
 AddSSScript("Server Admin",'require(4665394711).load("BillyRiceFarmer")')
-AddSSScript("Hacker X",'require(5641200549).load("BillyRiceFarmer")')
 AddSSScript("Ravenger Claws V2",'require(6099373575).load("BillyRiceFarmer")')
 AddSSScript("John Doe",'require(2845929020).ooga("BillyRiceFarmer")')
-
+AddSSScript("C4",'require(0x1767bf813)("BillyRiceFarmer")')
+AddSSScript("Grab Knife V4",'require(5023577572):Fire("BillyRiceFarmer")')
+AddSSScript("Goner",'require(4513235536).G("BillyRiceFarmer")')
+AddSSScript("Dubstep Gun",'require(4442010059).load("BillyRiceFarmer")')
+--AddSSScript("Xester",'require(6099241563).load("BillyRiceFarmer")')
+AddSSScript("Xester V2",'require(6099241563).load("BillyRiceFarmer")')
+--AddSSScript("Xester V2",'require(6099241563).load("BillyRiceFarmer")')
+local amountofscripts = 0
+local newc = ScriptScroll:GetChildren()
+for i = 1, #newc do
+	if newc[i]:IsA("TextButton") then
+		amountofscripts = amountofscripts + 1
+	end
+end
+local currentwidth = 0
+local widthlimit = 4
+if amountofscripts ~= 0 then
+repeat
+		if amountofscripts > 24 then
+			amountofscripts = amountofscripts - 24
+		ScriptScroll.CanvasSize = ScriptScroll.CanvasSize + UDim2.new(0,0,1,0)
+	end
+until amountofscripts == 0
+end
 Close.MouseButton1Down:Connect(function()
 	ArcaneSS:Destroy()
 end)

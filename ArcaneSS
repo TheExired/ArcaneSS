@@ -1,1 +1,419 @@
 
+
+local ArcaneSS = Instance.new("ScreenGui")
+ArcaneSS.Name = "ArcaneSS"
+ArcaneSS.Parent = game.Players.LocalPlayer.PlayerGui
+ArcaneSS.ResetOnSpawn = false
+
+local HolderFrame = Instance.new("Frame", ArcaneSS)
+HolderFrame.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+HolderFrame.Size = UDim2.new(0,498,0,302)
+HolderFrame.Position = UDim2.new(0.335,0,0.257,0)
+HolderFrame.BorderSizePixel = 0
+
+local UIS = game:GetService("UserInputService")
+function dragify(Frame)
+	dragToggle = nil
+	dragSpeed = 0.15
+	dragInput = nil
+	dragStart = nil
+	dragPos = nil
+	function updateInput(input)
+		Delta = input.Position - dragStart
+		Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+		game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.15), {Position = Position}):Play()
+	end
+	Frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+			dragToggle = true
+			dragStart = input.Position
+			startPos = Frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	Frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	game:GetService("UserInputService").InputChanged:Connect(function(input)
+		if input == dragInput and dragToggle then
+			updateInput(input)
+		end
+	end)
+end
+dragify(HolderFrame)
+
+local ScriptHubBox = Instance.new("Frame", HolderFrame)
+ScriptHubBox.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+ScriptHubBox.Size = UDim2.new(0.2,0,0.611,0)
+ScriptHubBox.Position = UDim2.new(0.784,0,0.198,0)
+ScriptHubBox.BorderSizePixel = 0
+
+local ScriptBox = Instance.new("Frame", HolderFrame)
+ScriptBox.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+ScriptBox.Size = UDim2.new(0.756,0,0.611,0)
+ScriptBox.Position = UDim2.new(0.016,0,0.198,0)
+ScriptBox.BorderSizePixel = 0
+ScriptBox.Name = "ScriptBox"
+
+local TextBox = Instance.new("TextBox",ScriptBox)
+TextBox.BackgroundTransparency = 1
+TextBox.Size = UDim2.new(0,360,0,184)
+TextBox.Position = UDim2.new(0,0,-0,0)
+TextBox.Font = Enum.Font.SourceSansBold
+TextBox.PlaceholderColor3 = Color3.fromRGB(186,186,186)
+TextBox.TextColor3 = Color3.fromRGB(255,255,255)
+TextBox.PlaceholderText = "Enter code here"
+TextBox.Text = ""
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+TextBox.TextSize = 20
+TextBox.TextWrapped = true
+TextBox.ClearTextOnFocus = false
+
+local TitleBox1 = Instance.new("Frame", HolderFrame)
+TitleBox1.BackgroundColor3 = Color3.fromRGB(93, 128, 255)
+TitleBox1.Size = UDim2.new(1,0,0.144,0)
+TitleBox1.Position = UDim2.new(-0,0,-0.001,0)
+TitleBox1.BorderSizePixel = 0
+
+local TitleBox2 = Instance.new("Frame", HolderFrame)
+TitleBox2.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+TitleBox2.Size = UDim2.new(1,0,0.022,0)
+TitleBox2.Position = UDim2.new(-0,0,0.141,0)
+TitleBox2.BorderSizePixel = 0
+
+local Title = Instance.new("TextLabel",TitleBox1)
+Title.Text = "Arcane SS"
+Title.TextScaled = true
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1,0,1,0)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+local Execute = Instance.new("TextButton",HolderFrame)
+Execute.Name = "EX"
+Execute.Position = UDim2.new(0.014,0,0.841,0)
+Execute.Size = UDim2.new(0.186,0,0.126,0)
+Execute.Font = Enum.Font.SourceSansBold
+Execute.TextColor3 = Color3.fromRGB(255,255,255)
+Execute.TextSize = 20
+Execute.Text = "Execute"
+Execute.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+Execute.BorderSizePixel = 0
+
+local Clear = Instance.new("TextButton",HolderFrame)
+Clear.Name = "CL"
+Clear.Position = UDim2.new(0.211,0,0.841,0)
+Clear.Size = UDim2.new(0.186,0,0.126,0)
+Clear.Font = Enum.Font.SourceSansBold
+Clear.TextColor3 = Color3.fromRGB(255,255,255)
+Clear.TextSize = 20
+Clear.Text = "Clear"
+Clear.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+Clear.BorderSizePixel = 0
+--[[
+local Respawn = Instance.new("TextButton",HolderFrame)
+Respawn.Name = "RE"
+Respawn.Position = UDim2.new(0.407,0,0.841,0)
+Respawn.Size = UDim2.new(0.186,0,0.126,0)
+Respawn.Font = Enum.Font.SourceSansBold
+Respawn.TextColor3 = Color3.fromRGB(255,255,255)
+Respawn.TextSize = 20
+Respawn.Text = "Respawn"
+Respawn.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+Respawn.BorderSizePixel = 0]]
+
+
+local OpenFile = Instance.new("TextButton",HolderFrame)
+OpenFile.Name = "OF"
+OpenFile.Position = UDim2.new(0.407,0,0.841,0)
+OpenFile.Size = UDim2.new(0.186,0,0.053,0)
+OpenFile.Font = Enum.Font.SourceSansBold
+OpenFile.TextColor3 = Color3.fromRGB(255,255,255)
+OpenFile.TextSize = 15
+OpenFile.Text = "Open File"
+OpenFile.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+OpenFile.BorderSizePixel = 0
+
+local SaveFile = Instance.new("TextButton",HolderFrame)
+SaveFile.Name = "SF"
+SaveFile.Position = UDim2.new(0.407,0,0.911,0)
+SaveFile.Size = UDim2.new(0.186,0,0.053,0)
+SaveFile.Font = Enum.Font.SourceSansBold
+SaveFile.TextColor3 = Color3.fromRGB(255,255,255)
+SaveFile.TextSize = 15
+SaveFile.Text = "Save File"
+SaveFile.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+SaveFile.BorderSizePixel = 0
+
+local ScriptHub = Instance.new("TextButton",HolderFrame)
+ScriptHub.Name = "SH"
+ScriptHub.Position = UDim2.new(0.784,0,0.841,0)
+ScriptHub.Size = UDim2.new(0.199,0,0.126,0)
+ScriptHub.Font = Enum.Font.SourceSansBold
+ScriptHub.TextColor3 = Color3.fromRGB(255,255,255)
+ScriptHub.TextSize = 20
+ScriptHub.Text = "Script Hub"
+ScriptHub.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+ScriptHub.BorderSizePixel = 0
+
+
+	local FE = Instance.new("ImageButton",HolderFrame)
+	FE.Name = "FE"
+	FE.BackgroundTransparency = 1
+	FE.Image = "rbxassetid://3926309567"
+	FE.Size = UDim2.new(0,16,0,16)
+	FE.Position = UDim2.new(0.622,0,0.841,0)
+	FE.ImageRectOffset = Vector2.new(784, 420)
+	FE.ImageRectSize = Vector2.new(48, 48)
+	
+	local UIAspect = Instance.new("UIAspectRatioConstraint",FE)
+	UIAspect.AspectRatio = 1
+	UIAspect.AspectType = Enum.AspectType.FitWithinMaxSize
+	UIAspect.DominantAxis = Enum.DominantAxis.Width
+	
+	local TextFE = Instance.new("TextLabel",FE)
+	TextFE.Text = "SS"
+	TextFE.TextScaled = true
+	TextFE.BackgroundTransparency = 1
+	TextFE.Size = UDim2.new(1.25,0,1,0)
+	TextFE.Position = UDim2.new(1.375,0,0,0)
+	TextFE.Font = Enum.Font.SourceSansBold
+TextFE.TextColor3 = Color3.fromRGB(255,255,255)
+
+local NotFE = Instance.new("ImageButton",HolderFrame)
+NotFE.Name = "NotFE"
+NotFE.BackgroundTransparency = 1
+NotFE.Image = "rbxassetid://3926309567"
+NotFE.Size = UDim2.new(0,16,0,16)
+NotFE.Position = UDim2.new(0.622,0,0.911,0)
+NotFE.ImageRectOffset = Vector2.new(628, 420)
+NotFE.ImageRectSize = Vector2.new(48, 48)
+
+local UIAspectNotFE = Instance.new("UIAspectRatioConstraint",NotFE)
+UIAspectNotFE.AspectRatio = 1
+UIAspectNotFE.AspectType = Enum.AspectType.FitWithinMaxSize
+UIAspectNotFE.DominantAxis = Enum.DominantAxis.Width
+
+local TextNotFE = Instance.new("TextLabel",NotFE)
+TextNotFE.Text = "FE"
+TextNotFE.TextScaled = true
+TextNotFE.BackgroundTransparency = 1
+TextNotFE.Size = UDim2.new(1.25,0,1,0)
+TextNotFE.Position = UDim2.new(1.375,0,0,0)
+TextNotFE.Font = Enum.Font.SourceSansBold
+TextNotFE.TextColor3 = Color3.fromRGB(255,255,255)
+
+local ScriptList = Instance.new("UIListLayout",ScriptHubBox)
+ScriptList.Padding = UDim.new(0,10)
+
+local SSButton = Instance.new("TextButton",ScriptHubBox)
+SSButton.Name = "SS"
+SSButton.Position = UDim2.new(0,0,0,0)
+SSButton.Size = UDim2.new(1,0,0.15,0)
+SSButton.Font = Enum.Font.SourceSansBold
+SSButton.TextColor3 = Color3.fromRGB(255,255,255)
+SSButton.TextSize = 20
+SSButton.Text = "SS"
+SSButton.BackgroundColor3 = Color3.fromRGB(93, 128, 255)
+SSButton.BorderSizePixel = 0
+
+local SSDeco = Instance.new("Frame", SSButton)
+SSDeco.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+SSDeco.Size = UDim2.new(1,0,0.2,0)
+SSDeco.Position = UDim2.new(0,0,1,0)
+SSDeco.BorderSizePixel = 0
+
+local SSScriptBox = Instance.new("Frame", SSButton)
+SSScriptBox.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+SSScriptBox.Size = UDim2.new(1,0,05.467,0)
+SSScriptBox.Position = UDim2.new(0,0,1.2,0)
+SSScriptBox.BackgroundTransparency = 1
+
+SSScriptBox.Visible = false
+
+local SSScriptList = Instance.new("UIListLayout",SSScriptBox)
+SSScriptList.Padding = UDim.new(0,2)
+
+local FEButton = Instance.new("TextButton",ScriptHubBox)
+FEButton.Name = "FE"
+FEButton.Position = UDim2.new(0,0,0,0)
+FEButton.Size = UDim2.new(1,0,0.15,0)
+FEButton.Font = Enum.Font.SourceSansBold
+FEButton.TextColor3 = Color3.fromRGB(255,255,255)
+FEButton.TextSize = 20
+FEButton.Text = "FE"
+FEButton.BackgroundColor3 = Color3.fromRGB(93, 128, 255)
+FEButton.BorderSizePixel = 0
+
+local FEDeco = Instance.new("Frame", FEButton)
+FEDeco.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+FEDeco.Size = UDim2.new(1,0,0.2,0)
+FEDeco.Position = UDim2.new(0,0,1,0)
+FEDeco.BorderSizePixel = 0
+
+local FEScriptBox = Instance.new("Frame", FEButton)
+FEScriptBox.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+FEScriptBox.Size = UDim2.new(1,0,05.467,0)
+FEScriptBox.Position = UDim2.new(0,0,1.2,0)
+FEScriptBox.BackgroundTransparency = 1
+
+FEScriptBox.Visible = false
+
+local FEScriptList = Instance.new("UIListLayout",FEScriptBox)
+FEScriptList.Padding = UDim.new(0,2)
+
+local function AddFEScript(Name,Script)
+	local ScriptButton = Instance.new("TextButton",FEScriptBox)
+	ScriptButton.Name = Name
+	ScriptButton.Text = Name
+	ScriptButton.BackgroundTransparency = 1
+	ScriptButton.Font = Enum.Font.SourceSansBold
+	ScriptButton.TextColor3 = Color3.fromRGB(255,255,255)
+	ScriptButton.TextSize = 15
+	ScriptButton.Size = UDim2.new(1,0,0.133,0)
+	ScriptButton.TextWrapped = true
+	ScriptButton.MouseButton1Down:Connect(function()
+		pcall(function()
+			task.spawn(function()
+				loadstring(game:HttpGet(tostring(Script), true))()
+				end)
+		end)
+	end)
+end
+
+local function AddSSScript(Name,Script)
+	local ScriptButton = Instance.new("TextButton",SSScriptBox)
+	ScriptButton.Name = Name
+	ScriptButton.Text = Name
+	ScriptButton.BackgroundTransparency = 1
+	ScriptButton.Font = Enum.Font.SourceSansBold
+	ScriptButton.TextColor3 = Color3.fromRGB(255,255,255)
+	ScriptButton.TextSize = 15
+	ScriptButton.Size = UDim2.new(1,0,0.133,0)
+	ScriptButton.TextWrapped = true
+	ScriptButton.MouseButton1Down:Connect(function()
+		pcall(function()
+			task.spawn(function()
+				pcall(function()
+					local c = game:GetDescendants()
+					for i = 1, #c do
+						if c[i]:IsA("RemoteEvent") then
+							c[i]:FireServer(Script)
+							c[i]:FireServer(nil,Script)
+							c[i]:FireServer(nil,nil,Script)
+						end
+					end
+				end)
+			end)
+		end)
+	end)
+end
+
+local function AddSSHubScript(Name,Script)
+	local ScriptButton = Instance.new("TextButton",SSScriptBox)
+	ScriptButton.Name = Name
+	ScriptButton.Text = Name
+	ScriptButton.BackgroundTransparency = 1
+	ScriptButton.Font = Enum.Font.SourceSansBold
+	ScriptButton.TextColor3 = Color3.fromRGB(255,255,255)
+	ScriptButton.TextSize = 15
+	ScriptButton.Size = UDim2.new(1,0,0.133,0)
+	ScriptButton.TextWrapped = true
+	ScriptButton.MouseButton1Down:Connect(function()
+		pcall(function()
+			task.spawn(function()
+				loadstring(game:HttpGet(tostring(Script), true))()
+			end)
+		end)
+		
+	end)
+end
+
+AddFEScript("Server Admin","https://raw.githubusercontent.com/TheExired/ServerAdmin/main/FE")
+AddFEScript("Infinite Yield",'https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')
+AddFEScript("Lightning Cannon",'https://raw.githubusercontent.com/TheExired/LightningCannon/main/FE')
+
+AddSSScript("Script Hub",'https://raw.githubusercontent.com/TheExired/ArcaneSS/main/SSScriptHub')
+AddSSScript("R6",'require(6861971724).convert("BillyRiceFarmer")')
+
+--AddFEScript()
+--AddFEScript("Elixir Hub","https://raw.githubusercontent.com/TheExired/Elixir-FE-Hub/main/Elixir%20FE%20Hub")
+	
+
+
+
+NotFE.MouseButton1Down:Connect(function()
+	if FE.ImageRectOffset == Vector2.new(784, 420) then
+
+		NotFE.ImageRectOffset = Vector2.new(784, 420)
+		NotFE.ImageRectSize = Vector2.new(48, 48)
+		FE.ImageRectOffset = Vector2.new(628, 420)
+		FE.ImageRectSize = Vector2.new(48, 48)
+	end
+end)
+
+FE.MouseButton1Down:Connect(function()
+	if NotFE.ImageRectOffset == Vector2.new(784, 420) then
+
+		FE.ImageRectOffset = Vector2.new(784, 420)
+		FE.ImageRectSize = Vector2.new(48, 48)
+		NotFE.ImageRectOffset = Vector2.new(628, 420)
+		NotFE.ImageRectSize = Vector2.new(48, 48)
+	end
+end)
+
+
+Clear.MouseButton1Down:Connect(function()
+	TextBox.Text = ""
+end)
+
+Execute.MouseButton1Down:Connect(function()
+	if FE.ImageRectOffset == Vector2.new(784, 420) then
+		pcall(function()
+			local c = game:GetDescendants()
+			for i = 1, #c do
+				if c[i]:IsA("RemoteEvent") then
+					c[i]:FireServer(TextBox.Text)
+					c[i]:FireServer(nil,TextBox.Text)
+					c[i]:FireServer(nil,nil,TextBox.Text)
+				end
+			end
+		end)
+	elseif FE.ImageRectOffset == Vector2.new(628, 420) then
+		pcall(function()
+			loadstring(tostring(TextBox.Text))()
+		end)
+		
+	end
+end)
+
+FEButton.MouseButton1Down:Connect(function()
+	if SSButton.Visible == true then
+		SSButton.Visible = false
+		FEScriptBox.Visible = true
+		SSScriptBox.Visible = false
+	else
+		SSButton.Visible = true
+		FEScriptBox.Visible = false
+		SSScriptBox.Visible = false
+	end
+end)
+
+SSButton.MouseButton1Down:Connect(function()
+	if FEButton.Visible == true then
+		FEButton.Visible = false
+		SSScriptBox.Visible = true
+		FEScriptBox.Visible = false
+	else
+		FEButton.Visible = true
+		SSScriptBox.Visible = false
+		FEScriptBox.Visible = false
+	end
+end)

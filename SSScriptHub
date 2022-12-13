@@ -1,0 +1,163 @@
+
+local ArcaneSS = Instance.new("ScreenGui")
+ArcaneSS.Name = "ArcaneSSScriptHub"
+ArcaneSS.Parent = game.Players.LocalPlayer.PlayerGui
+ArcaneSS.ResetOnSpawn = false
+
+local HolderFrame = Instance.new("Frame", ArcaneSS)
+HolderFrame.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
+HolderFrame.Size = UDim2.new(0,498,0,302)
+HolderFrame.Position = UDim2.new(0.335,0,0.257,0)
+HolderFrame.BorderSizePixel = 0
+
+local UIS = game:GetService("UserInputService")
+function dragify(Frame)
+	dragToggle = nil
+	dragSpeed = 0.15
+	dragInput = nil
+	dragStart = nil
+	dragPos = nil
+	function updateInput(input)
+		Delta = input.Position - dragStart
+		Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+		game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.15), {Position = Position}):Play()
+	end
+	Frame.InputBegan:Connect(function(input)
+		if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+			dragToggle = true
+			dragStart = input.Position
+			startPos = Frame.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragToggle = false
+				end
+			end)
+		end
+	end)
+	Frame.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	game:GetService("UserInputService").InputChanged:Connect(function(input)
+		if input == dragInput and dragToggle then
+			updateInput(input)
+		end
+	end)
+end
+dragify(HolderFrame)
+
+
+local ScriptBox = Instance.new("Frame", HolderFrame)
+ScriptBox.BackgroundColor3 = Color3.fromRGB(39, 39, 39)
+ScriptBox.Size = UDim2.new(0.969, 0,0.774, 0)
+ScriptBox.Position = UDim2.new(0.016, 0,0.198, 0)
+ScriptBox.BorderSizePixel = 0
+ScriptBox.Name = "ScriptBox"
+ScriptBox.ClipsDescendants = false
+
+local ScriptScroll = Instance.new("ScrollingFrame",ScriptBox)
+ScriptScroll.BackgroundTransparency = 1
+ScriptScroll.Size = UDim2.new(1,0,1,0)
+ScriptScroll.ScrollBarThickness = 8
+ScriptScroll.Position = UDim2.new(0,0,0,0)
+ScriptScroll.ScrollBarImageColor3 = Color3.fromRGB(20, 134, 255)
+ScriptScroll.BorderSizePixel = 0
+ScriptScroll.CanvasSize = UDim2.new(0,0,2,0)
+ScriptScroll.ClipsDescendants = true
+ScriptScroll.CanvasPosition = Vector2.new(0,0)
+
+
+
+local TitleBox1 = Instance.new("Frame", HolderFrame)
+TitleBox1.BackgroundColor3 = Color3.fromRGB(93, 128, 255)
+TitleBox1.Size = UDim2.new(1,0,0.144,0)
+TitleBox1.Position = UDim2.new(-0,0,-0.001,0)
+TitleBox1.BorderSizePixel = 0
+
+local TitleBox2 = Instance.new("Frame", HolderFrame)
+TitleBox2.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+TitleBox2.Size = UDim2.new(1,0,0.022,0)
+TitleBox2.Position = UDim2.new(-0,0,0.141,0)
+TitleBox2.BorderSizePixel = 0
+
+local Title = Instance.new("TextLabel",TitleBox1)
+Title.Text = "Arcane SS Script Hub"
+Title.TextScaled = true
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1,0,1,0)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+
+local Close = Instance.new("TextButton",HolderFrame)
+Close.Name = "Close"
+Close.Position = UDim2.new(0.908,0,0.007,0)
+Close.Size = UDim2.new(0.077,0,0.126,0)
+Close.Font = Enum.Font.SourceSansBold
+Close.TextColor3 = Color3.fromRGB(255,255,255)
+Close.TextSize = 45
+Close.Text = "X"
+Close.BackgroundTransparency = 1
+Close.BorderSizePixel = 0
+
+
+
+
+	
+
+local ScriptList = Instance.new("UIGridLayout",ScriptScroll)
+ScriptList.CellPadding = UDim2.new(0,10,0,15)
+ScriptList.CellSize = UDim2.new(0,100,0,30)
+ScriptList.FillDirectionMaxCells = 4
+
+local function AddSSScript(Name,Script)
+	local ScriptButton = Instance.new("TextButton",ScriptScroll)
+	ScriptButton.Name = Name
+	ScriptButton.Text = Name
+	--ScriptButton.BackgroundTransparency = 1
+	ScriptButton.BackgroundColor3 = Color3.fromRGB(93, 128, 255)
+	ScriptButton.BorderSizePixel = 0
+	ScriptButton.Font = Enum.Font.SourceSansBold
+	ScriptButton.TextColor3 = Color3.fromRGB(255,255,255)
+	ScriptButton.TextSize = 15
+	ScriptButton.Size = UDim2.new(0.207,0,0.214,0)
+	
+	local deco = Instance.new("Frame",ScriptButton)
+	deco.BorderSizePixel = 0
+	deco.BackgroundColor3 = Color3.fromRGB(75, 103, 206)
+	deco.Position = UDim2.new(0,0,1,0)
+	deco.Size = UDim2.new(1,0,0.2,0)
+	
+	local uitextconstraint = Instance.new("UITextSizeConstraint",ScriptButton)
+	uitextconstraint.MaxTextSize = 15
+	ScriptButton.TextScaled = true
+	ScriptButton.MouseButton1Down:Connect(function()
+		pcall(function()
+			task.spawn(function()
+				pcall(function()
+					local c = game:GetDescendants()
+					for i = 1, #c do
+						if c[i]:IsA("RemoteEvent") then
+							c[i]:FireServer(Script)
+							c[i]:FireServer(nil,Script)
+							c[i]:FireServer(nil,nil,Script)
+						end
+					end
+				end)
+			end)
+		end)
+	end)
+end
+
+
+AddSSScript("Lightning Cannon",'require(6411905832).Lightning(string.reverse("BillyRiceFarmer"))')
+AddSSScript("R6",'require(6861971724).convert("BillyRiceFarmer")')
+AddSSScript("Vereus",'require(4875169740).load("BillyRiceFarmer")')
+AddSSScript("Server Admin",'require(4665394711).load("BillyRiceFarmer")')
+AddSSScript("Hacker X",'require(5641200549).load("BillyRiceFarmer")')
+AddSSScript("Ravenger Claws V2",'require(6099373575).load("BillyRiceFarmer")')
+AddSSScript("John Doe",'require(2845929020).ooga("BillyRiceFarmer")')
+
+Close.MouseButton1Down:Connect(function()
+	ArcaneSS:Destroy()
+end)

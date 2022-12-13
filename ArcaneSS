@@ -331,9 +331,10 @@ local function AddSSHubScript(Name,Script)
 				loadstring(game:HttpGet(tostring(Script), true))()
 			end)
 		end)
-		
 	end)
 end
+
+
 
 AddFEScript("Server Admin","https://raw.githubusercontent.com/TheExired/ServerAdmin/main/FE")
 AddFEScript("Infinite Yield",'https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')

@@ -174,7 +174,8 @@ end
 local currentwidth = 0
 local widthlimit = 4
 if amountofscripts ~= 0 then
-repeat
+	repeat
+		task.wait()
 		if amountofscripts > 24 then
 			amountofscripts = amountofscripts - 24
 		ScriptScroll.CanvasSize = ScriptScroll.CanvasSize + UDim2.new(0,0,1,0)

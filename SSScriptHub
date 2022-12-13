@@ -9,7 +9,7 @@ HolderFrame.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
 HolderFrame.Size = UDim2.new(0,498,0,302)
 HolderFrame.Position = UDim2.new(0.335,0,0.257,0)
 HolderFrame.BorderSizePixel = 0
-
+--[[
 local UIS = game:GetService("UserInputService")
 function dragify(Frame)
 	dragToggle = nil
@@ -46,7 +46,7 @@ function dragify(Frame)
 	end)
 end
 dragify(HolderFrame)
-
+]]
 
 local ScriptBox = Instance.new("Frame", HolderFrame)
 ScriptBox.BackgroundColor3 = Color3.fromRGB(39, 39, 39)

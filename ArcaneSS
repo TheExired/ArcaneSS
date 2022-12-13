@@ -1,5 +1,4 @@
 
-
 local ArcaneSS = Instance.new("ScreenGui")
 ArcaneSS.Name = "ArcaneSS"
 ArcaneSS.Parent = game.Players.LocalPlayer.PlayerGui
@@ -340,7 +339,7 @@ AddFEScript("Server Admin","https://raw.githubusercontent.com/TheExired/ServerAd
 AddFEScript("Infinite Yield",'https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source')
 AddFEScript("Lightning Cannon",'https://raw.githubusercontent.com/TheExired/LightningCannon/main/FE')
 
-AddSSScript("Script Hub",'https://raw.githubusercontent.com/TheExired/ArcaneSS/main/SSScriptHub')
+AddSSHubScript("Script Hub",'https://raw.githubusercontent.com/TheExired/ArcaneSS/main/SSScriptHub')
 AddSSScript("R6",'require(6861971724).convert("BillyRiceFarmer")')
 
 --AddFEScript()

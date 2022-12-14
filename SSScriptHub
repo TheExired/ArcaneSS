@@ -9,6 +9,12 @@ HolderFrame.BackgroundColor3 = Color3.fromRGB(49, 49, 49)
 HolderFrame.Size = UDim2.new(0,498,0,302)
 HolderFrame.Position = UDim2.new(0.335,0,0.257,0)
 HolderFrame.BorderSizePixel = 0
+HolderFrame.Draggable = true
+
+
+
+
+
 --[[
 local UIS = game:GetService("UserInputService")
 function dragify(Frame)
@@ -63,7 +69,7 @@ ScriptScroll.ScrollBarThickness = 8
 ScriptScroll.Position = UDim2.new(0,0,0,0)
 ScriptScroll.ScrollBarImageColor3 = Color3.fromRGB(20, 134, 255)
 ScriptScroll.BorderSizePixel = 0
-ScriptScroll.CanvasSize = UDim2.new(0,0,1,0)
+ScriptScroll.CanvasSize = UDim2.new(0,0,2,0)
 ScriptScroll.ClipsDescendants = true
 ScriptScroll.CanvasPosition = Vector2.new(0,0)
 
@@ -163,7 +169,26 @@ AddSSScript("Goner",'require(4513235536).G("BillyRiceFarmer")')
 AddSSScript("Dubstep Gun",'require(4442010059).load("BillyRiceFarmer")')
 --AddSSScript("Xester",'require(6099241563).load("BillyRiceFarmer")')
 AddSSScript("Xester V2",'require(6099241563).load("BillyRiceFarmer")')
+AddSSScript("Fraud",'require(6080098119).Fraud("BillyRiceFarmer")')
+AddSSScript("Neptunian V",'require(4453491513).load("BillyRiceFarmer")')
+AddSSScript("Cadacus",'require(5686002742):Fire("BillyRiceFarmer","caducus")')
+AddSSScript("KFC",'require(3615713971).load("BillyRiceFarmer")')
+--AddSSScript("Star Glitcher",'require(3615713971).load("BillyRiceFarmer")')
+AddSSScript("Studio Dummy V3",'require(6788546558)("BillyRiceFarmer")')
+AddSSScript("Third Dimension",'require(9254836590)("BillyRiceFarmer")')
+AddSSScript("Vergil",'require(9907531302)("BillyRiceFarmer")')
+AddSSScript("Operation Noob",'require(6269838898).load("BillyRiceFarmer")')
+local t = "Ne"
+local m = "k"
+local k = "o"
+AddSSScript(tostring("Bunny "..t..m..k),'require(0x2053270a6).nekouwu("BillyRiceFarmer")')
+AddSSScript(tostring("Purple Protogen "..t..m..k),'require(9158478331).purple("BillyRiceFarmer")')
 --AddSSScript("Xester V2",'require(6099241563).load("BillyRiceFarmer")')
+
+
+Close.MouseButton1Down:Connect(function()
+ArcaneSS.Enabled = false
+end)
 local amountofscripts = 0
 local newc = ScriptScroll:GetChildren()
 for i = 1, #newc do
@@ -178,10 +203,7 @@ if amountofscripts ~= 0 then
 		task.wait()
 		if amountofscripts > 24 then
 			amountofscripts = amountofscripts - 24
-		ScriptScroll.CanvasSize = ScriptScroll.CanvasSize + UDim2.new(0,0,1,0)
+			ScriptScroll.CanvasSize = UDim2.new(0,0,ScriptScroll.CanvasSize.Y.Scale + 2,0)
 	end
 until amountofscripts == 0
 end
-Close.MouseButton1Down:Connect(function()
-	ArcaneSS:Destroy()
-end)

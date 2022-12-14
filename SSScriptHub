@@ -177,7 +177,10 @@ AddSSScript("KFC",'require(3615713971).load("BillyRiceFarmer")')
 AddSSScript("Studio Dummy V3",'require(6788546558)("BillyRiceFarmer")')
 AddSSScript("Third Dimension",'require(9254836590)("BillyRiceFarmer")')
 AddSSScript("Vergil",'require(9907531302)("BillyRiceFarmer")')
+
 AddSSScript("Operation Noob",'require(6269838898).load("BillyRiceFarmer")')
+AddSSScript("Baby Nefl",'require(10727156710).load("BillyRiceFarmer")')
+
 local t = "Ne"
 local m = "k"
 local k = "o"

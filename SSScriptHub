@@ -180,12 +180,17 @@ AddSSScript("Vergil",'require(9907531302)("BillyRiceFarmer")')
 
 AddSSScript("Operation Noob",'require(6269838898).load("BillyRiceFarmer")')
 AddSSScript("Baby Nefl",'require(10727156710).load("BillyRiceFarmer")')
+AddSSScript("Alpha Gatling Gun",'require(5451379778).Gun("BillyRiceFarmer")')
+AddSSScript("Guns Gui",'require(7507987223)("BillyRiceFarmer","Guns")')
+--AddSSScript("Hungry Noob",'require(7507987223)("BillyRiceFarmer","Guns")')
+
+
 
 local t = "Ne"
 local m = "k"
 local k = "o"
-AddSSScript(tostring("Bunny "..t..m..k),'require(0x2053270a6).nekouwu("BillyRiceFarmer")')
-AddSSScript(tostring("Purple Protogen "..t..m..k),'require(9158478331).purple("BillyRiceFarmer")')
+--AddSSScript(tostring("Bunny "..t..m..k),'require(0x2053270a6).nekouwu("BillyRiceFarmer")')
+--AddSSScript(tostring("Purple Protogen "..t..m..k),'require(9158478331).purple("BillyRiceFarmer")')
 --AddSSScript("Xester V2",'require(6099241563).load("BillyRiceFarmer")')
 
 
